@@ -1,0 +1,11 @@
+<div class="container">
+    <input #inputNumber type="number" (input)="setCharactersListByInputEvent($event)" min="1" max="{{ apiTotalPages }}" placeholder="API page number (1 to {{ apiTotalPages }})">
+    <app-characters-pages [appComponent]="this"></app-characters-pages>
+    <div class="characters-container">
+        <app-character
+        *ngFor="let character of characterList"
+        [character]="character"
+        ></app-character>
+    </div>
+    <app-characters-pages [appComponent]="this"></app-characters-pages>
+</div>

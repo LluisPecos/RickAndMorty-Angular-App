@@ -1,0 +1,19 @@
+.api-pages-container {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    background-color: thistle;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+span.currentPage {
+    color: blue;
+    font-weight: bold;
+}
+
+span:is(.previousPage, .currentPage, .nextPage) {
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+}

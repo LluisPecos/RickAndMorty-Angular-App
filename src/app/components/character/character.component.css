@@ -1,0 +1,62 @@
+.container {
+    cursor: pointer;
+    height: 100%;
+}
+
+.character-container {
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: lightblue;
+    border-radius: 20px;
+    position: relative;
+    transition: all 0.6s ease;
+    max-width: 300px;
+    height: 100%;
+    pointer-events: none;
+}
+
+div:hover .character-container {
+    transition: scale 0.6s ease, box-shadow 0.6s ease;
+    transform: perspective(1000px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+    scale: 1.1;
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.2);
+}
+
+.character-container .character-properties {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    text-decoration: none;
+}
+
+.modal {
+    position: fixed;
+    overflow-y: auto;
+    inset: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 999;
+    padding: 40px;
+}
+
+.modal a {
+    color: lightblue;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal .modal-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal .modal-heading .close-modal {
+    font-size: 40px;
+    user-select: none;
+    cursor: pointer;
+}

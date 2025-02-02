@@ -1,0 +1,20 @@
+@if (character != undefined) {
+
+    <div class="container" (mousemove)="applyPerspective($event)" (click)="showCharacterData()" title="Show character data">
+        <div class="character-container" #characterContainer>
+            <img src="{{ character.image }}">
+            <div class="character-properties">
+                <span class="character-id">ID: {{ character.id }}</span>
+                <span class="character-name">Name: {{ character.name }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal" #modal>
+        <div class="modal-heading">
+            <div>URL: <a target="_blank" rel="noopener noreferrer" href="https://rickandmortyapi.com/api/character/{{ character.id }}">https://rickandmortyapi.com/api/character/{{ character.id }}</a></div>
+            <div (click)="hideCharacterData()" class="close-modal">X</div>
+        </div>
+        <pre>{{ character | json }}</pre>
+    </div>
+    
+}

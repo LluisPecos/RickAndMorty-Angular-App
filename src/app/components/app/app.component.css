@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    align-items: center;
+    padding: 40px;
+}
+
+.characters-container {
+    display: flex;
+    column-gap: 40px;
+    row-gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+input[type='number'] {
+    width: 200px;
+    height: 30px;
+}
