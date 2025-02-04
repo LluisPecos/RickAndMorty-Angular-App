@@ -17,9 +17,12 @@ export class AppComponent {
   title: string = "LluisSuauAngularRickAndMortyApi";
   apiTotalPages!: Number;
   
+  originalCharactersList: Character[] | undefined;
   characterList: Character[] | undefined;
 
-  @ViewChild("inputNumber") inputNumber!: ElementRef;
+  @ViewChild("iptApiPage") iptApiPage!: ElementRef;
+  @ViewChild("selectFilter") selectFilter!: ElementRef;
+  @ViewChild("iptSearch") iptSearch!: ElementRef;
   @ViewChildren(CharactersPagesComponent) charactersPagesComponents!: QueryList<CharactersPagesComponent>;
 
   constructor(private characterService: CharacterService) {
@@ -31,7 +34,11 @@ export class AppComponent {
 
   setCharactersListByPage(pageNumber: number) {
     this.characterService.getCharactersPage(pageNumber).subscribe({
-      next: (page) => this.characterList = page.results,
+      next: (page) => {
+        this.characterList = page.results;
+        this.originalCharactersList = page.results;
+        this.iptSearch.nativeElement.value = "";
+      },
       error: (err) => console.error('Error fetching characters:', err)
     });
   }
@@ -64,11 +71,59 @@ export class AppComponent {
   }
 
   updateAllCharactersPagesComponents(pageNumber: number) {
-    this.inputNumber.nativeElement.value = pageNumber;
+    this.iptApiPage.nativeElement.value = pageNumber;
 
     // update characters pages components
     this.charactersPagesComponents.forEach(charactersPagesComponent => {
       charactersPagesComponent.setCurrentApiPage(pageNumber);
     });
+  }
+
+  filterCharacters() {
+    this.characterList = [];
+
+    this.originalCharactersList?.forEach(character => {
+      if(this.characterMeetsFilters(character) || !this.iptSearch.nativeElement.value) {
+        this.characterList?.push(character);
+      };
+    });
+  }
+
+  characterMeetsFilters(character: Character) : Boolean {
+    let iptSearchValue = this.iptSearch.nativeElement.value.toLowerCase();
+    let selectFilterValue = this.selectFilter.nativeElement.value;
+    let characterFieldValue = "";
+
+    switch(selectFilterValue) {
+      case "id":
+        characterFieldValue = character.id.toString().toLowerCase();
+        break;
+
+      case "name":
+        characterFieldValue = character.name.toLowerCase();
+        break;
+
+      case "status":
+        characterFieldValue = character.status.toLowerCase();
+        break;
+
+      case "specie":
+        characterFieldValue = character.species.toLowerCase();
+        break;
+
+      case "type":
+        characterFieldValue = character.type.toLowerCase();
+        break;
+
+      case "gender":
+        characterFieldValue = character.gender.toLowerCase();
+        break;
+    }
+
+    if(characterFieldValue.includes(iptSearchValue)) {
+      return true;
+    }
+
+    return false;
   }
 }

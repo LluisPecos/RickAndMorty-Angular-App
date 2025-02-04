@@ -7,6 +7,7 @@ Este es un proyecto de Angular que consume la API de Rick and Morty para mostrar
 - **Listado de personajes**: Muestra una lista de personajes con su imagen, id y nombre.
 - **Detalles del personaje**: Al hacer clic en un personaje, se muestra toda la información sobre él.
 - **Paginación**: Permite navegar entre las diferentes páginas de resultados.
+- **Filtros de búsqueda**: Permite buscar personajes, de la página de resultados actual, por uno de sus campos.
 
 ## Tecnologías utilizadas
 

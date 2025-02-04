@@ -2,10 +2,17 @@
 
     <div class="container" (mousemove)="applyPerspective($event)" (click)="showCharacterData()" title="Show character data">
         <div class="character-container" #characterContainer>
-            <img src="{{ character.image }}">
+            <div class="img-container">
+                <img src="{{ character.image }}">
+                <div class="img-fading"></div>
+            </div>
             <div class="character-properties">
-                <span class="character-id">ID: {{ character.id }}</span>
-                <span class="character-name">Name: {{ character.name }}</span>
+                <span *ngIf="character.id">ID: {{ character.id }}</span>
+                <span *ngIf="character.name">Name: {{ character.name }}</span>
+                <span *ngIf="character.status">Status: {{ character.status }}</span>
+                <span *ngIf="character.species">Specie: {{ character.species }}</span>
+                <span *ngIf="character.type">Type: {{ character.type }}</span>
+                <span *ngIf="character.gender">Gender: {{ character.gender }}</span>
             </div>
         </div>
     </div>

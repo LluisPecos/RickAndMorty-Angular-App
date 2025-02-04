@@ -15,7 +15,11 @@
     align-items: stretch;
 }
 
-input[type='number'] {
+input:is([type='number'], [type='text']) {
     width: 200px;
+    height: 30px;
+}
+
+select {
     height: 30px;
 }

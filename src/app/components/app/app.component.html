@@ -1,5 +1,17 @@
 <div class="container">
-    <input #inputNumber type="number" (input)="setCharactersListByInputEvent($event)" min="1" max="{{ apiTotalPages }}" placeholder="API page number (1 to {{ apiTotalPages }})">
+    <input #iptApiPage type="number" (input)="setCharactersListByInputEvent($event)" min="1" max="{{ apiTotalPages }}" placeholder="API page number (1 to {{ apiTotalPages }})">
+    <div>
+        <input #iptSearch type="text" (input)="filterCharacters()" placeholder="Search by...">
+        <select (change)="filterCharacters()" #selectFilter>
+            <option value="id">ID</option>
+            <option value="name">Name</option>
+            <option value="status">Status</option>
+            <option value="specie">Specie</option>
+            <option value="type">Type</option>
+            <option value="gender">Gender</option>
+        </select>
+    </div>
+    
     <app-characters-pages [appComponent]="this"></app-characters-pages>
     <div class="characters-container">
         <app-character

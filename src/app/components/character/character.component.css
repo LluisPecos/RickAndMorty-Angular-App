@@ -60,3 +60,13 @@ div:hover .character-container {
     user-select: none;
     cursor: pointer;
 }
+
+.img-container {
+    position: relative;
+}
+
+.img-fading {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, lightblue 1%, transparent 10%);
+}
