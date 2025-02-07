@@ -4,13 +4,13 @@
 }
 
 .character-container {
+    display: flex;
+    flex-direction: row;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: lightblue;
+    background-color: rgb(60, 62, 68);
     border-radius: 20px;
     position: relative;
     transition: all 0.6s ease;
-    max-width: 300px;
     height: 100%;
     pointer-events: none;
 }
@@ -20,14 +20,71 @@ div:hover .character-container {
     transform: perspective(1000px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
     scale: 1.1;
     box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.2);
+    z-index: 99;
 }
 
 .character-container .character-properties {
-    padding: 20px;
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 20px;
+    padding: 13.5px;
+    color: rgb(245, 245, 245);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 300px;
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-container img {
+    height: 100%;
+}
+
+.img-fading {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(270deg, rgb(60, 62, 68) 1%, transparent 10%);
+}
+
+
+.character-container .character-properties h2 {
+    margin: 0px;
+}
+
+.character-container .character-properties .character-status-specie {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.character-container .character-properties .text-gray {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+}
+
+.character-container .character-properties a {
     text-decoration: none;
+    color: inherit;   
+}
+
+.character-container .character-properties :is(.alive, .dead, .unknown) {
+    width: 10px;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+}
+
+.alive {
+    background-color: rgb(85, 204, 68);
+}
+
+.dead {
+    background-color: red;
+}
+
+.unknown {
+    background-color: rgb(158, 158, 158);
 }
 
 .modal {
@@ -59,14 +116,4 @@ div:hover .character-container {
     font-size: 40px;
     user-select: none;
     cursor: pointer;
-}
-
-.img-container {
-    position: relative;
-}
-
-.img-fading {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg, lightblue 1%, transparent 10%);
 }

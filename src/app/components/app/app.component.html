@@ -1,6 +1,7 @@
 <div class="container">
-    <input #iptApiPage type="number" (input)="setCharactersListByInputEvent($event)" min="1" max="{{ apiTotalPages }}" placeholder="API page number (1 to {{ apiTotalPages }})">
-    <div>
+    <div class="title">The Rick and Morty API</div>
+    <div class="inputs-container">
+        <input #iptApiPage type="number" (input)="setCharactersListByInputEvent($event)" min="1" max="{{ apiTotalPages }}" placeholder="API page number (1 to {{ apiTotalPages }})">
         <input #iptSearch type="text" (input)="filterCharacters()" placeholder="Search by...">
         <select (change)="filterCharacters()" #selectFilter>
             <option value="id">ID</option>

@@ -1,5 +1,5 @@
 @if (character != undefined) {
-
+    
     <div class="container" (mousemove)="applyPerspective($event)" (click)="showCharacterData()" title="Show character data">
         <div class="character-container" #characterContainer>
             <div class="img-container">
@@ -7,12 +7,23 @@
                 <div class="img-fading"></div>
             </div>
             <div class="character-properties">
-                <span *ngIf="character.id">ID: {{ character.id }}</span>
-                <span *ngIf="character.name">Name: {{ character.name }}</span>
-                <span *ngIf="character.status">Status: {{ character.status }}</span>
-                <span *ngIf="character.species">Specie: {{ character.species }}</span>
-                <span *ngIf="character.type">Type: {{ character.type }}</span>
-                <span *ngIf="character.gender">Gender: {{ character.gender }}</span>
+                <div>
+                    <h2 *ngIf="character.name">{{ character.name }}</h2>
+                    <div class="character-status-specie">
+                        <div *ngIf="character.status.toLowerCase() == 'alive'" class="alive"></div>
+                        <div *ngIf="character.status.toLowerCase() == 'dead'" class="dead"></div>
+                        <div *ngIf="character.status.toLowerCase() == 'unknown'" class="unknown"></div>
+                        <span *ngIf="character.status && character.species">{{ character.status }} - {{ character.species }}</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-gray">Last known location:</div>
+                    <a href="{{ character.location.url }}">{{ character.location.name }}</a>
+                </div>
+                <div>
+                    <div class="text-gray">First seen in:</div>
+                    <div>{{ character.episode[0] }}</div>
+                </div>
             </div>
         </div>
     </div>

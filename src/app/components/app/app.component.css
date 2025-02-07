@@ -3,23 +3,43 @@
     flex-direction: column;
     row-gap: 40px;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
+}
+
+.title {
+    font-size: 50px;
+    color: white;
+    margin: 0px;
+    font-weight: bold;
 }
 
 .characters-container {
     display: flex;
-    column-gap: 40px;
-    row-gap: 40px;
+    column-gap: 20px;
+    row-gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
 }
 
-input:is([type='number'], [type='text']) {
-    width: 200px;
-    height: 30px;
+.inputs-container {
+    display: flex;
+    column-gap: 10px;
+    flex-wrap: wrap;
 }
 
-select {
-    height: 30px;
+input[type="number"] {
+    width: 250px !important;
+}
+
+input:is([type='number'], [type='text']), select {
+    font-size: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+input:is([type='number'], [type='text']) {
+    width: 200px;
 }
