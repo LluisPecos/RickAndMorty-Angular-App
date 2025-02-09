@@ -29,7 +29,10 @@
     </div>
     <div class="modal" #modal>
         <div class="modal-heading">
-            <div>URL: <a target="_blank" rel="noopener noreferrer" href="https://rickandmortyapi.com/api/character/{{ character.id }}">https://rickandmortyapi.com/api/character/{{ character.id }}</a></div>
+            <div>
+                <div>URL: <a target="_blank" rel="noopener noreferrer" href="https://rickandmortyapi.com/api/character/{{ character.id }}">https://rickandmortyapi.com/api/character/{{ character.id }}</a></div>
+                <div>CharacterDetailsComponent: <a (click)="hideCharacterData()" [routerLink]="['character', character.id]">{{ serverUrl }}/character/{{ character.id }}</a></div>
+            </div>
             <div (click)="hideCharacterData()" class="close-modal">X</div>
         </div>
         <pre>{{ character | json }}</pre>

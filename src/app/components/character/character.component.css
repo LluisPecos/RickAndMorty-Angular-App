@@ -92,10 +92,11 @@ div:hover .character-container {
     overflow-y: auto;
     inset: 0;
     display: none;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     z-index: 999;
     padding: 40px;
+    backdrop-filter: blur(10px);
 }
 
 .modal a {

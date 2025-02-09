@@ -1,5 +1,4 @@
 import { Component, ElementRef, inject, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CharacterComponent } from '../character/character.component';
 import { Character } from '../../interfaces/character';
@@ -8,7 +7,7 @@ import { CharactersPagesComponent } from "../characters-pages/characters-pages.c
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, CharacterComponent, CharactersPagesComponent],
+  imports: [CommonModule, CharacterComponent, CharactersPagesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -29,8 +28,6 @@ export class AppComponent {
     this.setApiTotalPages();
     this.setCharactersListByPage(1);
   }
-
-  async ngAfterViewInit() {}
 
   setCharactersListByPage(pageNumber: number) {
     this.characterService.getCharactersPage(pageNumber).subscribe({

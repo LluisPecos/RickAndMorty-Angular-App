@@ -1,0 +1,54 @@
+
+@if(character != undefined) {
+    <div class="container">
+        <div class="header-container">
+            <button #btnToggleView (click)="toggleView()">View Raw JSON</button>
+            <a routerLink="">Go Back</a>
+        </div>
+        <div class="content-container">
+
+    @if(viewRawJson == false) {
+        
+        <img src="{{ character.image }}">
+        <ul>
+            <li *ngIf="character.id"><b>ID:</b> {{ character.id }}</li>
+            <li *ngIf="character.name"><b>Name:</b> {{ character.name }}</li>
+            <li *ngIf="character.status"><b>Status:</b> {{ character.status }}</li>
+            <li *ngIf="character.species"><b>Specie:</b> {{ character.species }}</li>
+            <li *ngIf="character.type"><b>Type:</b> {{ character.type }}</li>
+            <li *ngIf="character.gender"><b>Gender:</b> {{ character.gender }}</li>
+            <li *ngIf="character.origin" class="origin"><b>Origin:</b>
+                <ul>
+                    <li><b>Name:</b> {{ character.origin.name }}</li>
+                    <li><b>URL: </b> <a target="_blank" href="{{ character.origin.url }}">{{ character.origin.url }}</a></li>
+                </ul>
+            </li>
+            <li *ngIf="character.location" class="location"><b>Location:</b>
+                <ul>
+                    <li><b>Name:</b> {{ character.location.name }}</li>
+                    <li><b>URL: </b> <a target="_blank" href="{{ character.location.url }}">{{ character.location.url }}</a></li>
+                </ul>
+            </li>
+            <li *ngIf="character.image"><b>Image: </b><a target="_blank" href="{{ character.image }}">{{ character.image }}</a></li>
+            <li *ngIf="character.episode" class="episodes"><b>Episodes:</b>
+                <!-- También se puede hacer el bucle con @for (solo versiones recientes de Angular)
+                <ul>
+                    @for (episode of character.episode; track character.episode) {
+                        <li>{{ episode }}</li>
+                    }
+                </ul>
+                -->
+                <ul *ngFor="let episode of character.episode">
+                    <li><a target="_blank" href="{{ episode }}">{{ episode }}</a></li>
+                </ul>
+            <li *ngIf="character.url"><b>URL: </b> <a target="_blank" href="{{ character.url }}">{{ character.url }}</a></li>
+            <li *ngIf="character.created"><b>Created:</b> {{ character.created }}</li>
+        </ul>
+
+    } @else {
+        <pre>{{ character | json }}</pre>
+    }
+
+        </div>
+    </div>
+}

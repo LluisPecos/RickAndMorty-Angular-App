@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { Character } from '../interfaces/character';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class CharacterService {
     return this.http.get<any>(`${this.apiUrl}`).pipe(
       map(pageJson => Number(pageJson.info.pages))
     );
+  }
+
+  getCharacterById(characterId: Number) : Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${characterId}`);
   }
 }

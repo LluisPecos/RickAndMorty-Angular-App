@@ -1,11 +1,11 @@
 import { Component, ElementRef, Inject, Input, Renderer2, ViewChild } from '@angular/core';
 import { Character } from '../../interfaces/character';
-import { CharacterService } from '../../services/character.service';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-character',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './character.component.html',
   styleUrl: './character.component.css'
 })
@@ -15,7 +15,11 @@ export class CharacterComponent {
   @ViewChild("characterContainer") characterContainer!: ElementRef;
   @ViewChild("modal") modal!: ElementRef;
 
-  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {}
+  serverUrl!: string;
+
+  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {
+    this.serverUrl = window.location.origin;
+  }
 
   applyPerspective(mouseEvent: MouseEvent) {
     let divElement = mouseEvent.target as HTMLElement;
@@ -40,6 +44,7 @@ export class CharacterComponent {
   }
 
   showCharacterData() {
+    //this.document.body.classList.add("modal-open");
     this.renderer.addClass(this.document.body, "modal-open");
     this.modal.nativeElement.classList.add("show");
   }

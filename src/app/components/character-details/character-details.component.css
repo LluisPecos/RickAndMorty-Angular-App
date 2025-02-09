@@ -1,0 +1,38 @@
+* {
+    color: white;
+}
+
+.container {
+    margin: 40px;
+}
+
+.header-container {
+    display: flex;
+    column-gap: 10px;
+}
+
+a {
+    color: lightblue;
+}
+
+.content-container {
+    margin-top: 1rem;
+}
+
+.content-container > ul {
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 20px;
+}
+
+li:is(.origin, .location, .episodes) li {
+    margin: 0px;
+}
+
+button {
+    color: black;
+}
+
+
